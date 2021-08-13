@@ -1,0 +1,4 @@
+export const SPELL_TRACE_CSS_COST = 2000;
+export const SPELL_TRACE_INNO_COST = 5000;
+export const SPELL_TRACE_ARK_INNO_COST = 10000;
+
