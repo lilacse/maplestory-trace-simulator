@@ -48,7 +48,7 @@ export class SimulationRun {
       console.log(`Use spell traces for Innocence Scrolls: ${this._options.useSpellTraceInno}`);
     }
     else {
-      console.log(`Success rate of Innocence Scrolls used: ${this._options.useInnotype * 100}%`);
+      console.log(`Success rate of Innocence Scrolls used: ${this._options.useInnoType * 100}%`);
       console.log(`Innocence Scrolls' cost in mesos: ${this._options.innoCost}`);
     }
     if (this._options.useSpellTraceCss) {
@@ -461,7 +461,7 @@ export class SimulationOptions {
   public innoCost: number = 0;
   public traceCost: number = 0;
   public useCssType: CssType = CssType.Css10p;
-  public useInnotype: InnoType = InnoType.Inno50p;
+  public useInnoType: InnoType = InnoType.Inno50p;
   public traceType: TraceType = TraceType.Trace100p;
   public hasFever: boolean = false; 
   public hasDiscount: boolean = false; 
@@ -509,7 +509,7 @@ export class SimulationOptions {
       else return 0.3;
     }
     else {
-      return this.useInnotype;
+      return this.useInnoType;
     }
   }
 
