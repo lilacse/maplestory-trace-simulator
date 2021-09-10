@@ -1,5 +1,2 @@
 node_modules
-out
-
-# main.ts is the file to try out features locally
-main.ts
+*.js
