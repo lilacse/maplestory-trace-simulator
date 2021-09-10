@@ -11,15 +11,15 @@
       <div id="equipOptionsInput">
         <div id="slots">
           <label id="equipOptionsSlotsLabel">Total number of slots: </label>
-          <input id="equipOptionsSlotsInput" type="number" min="0">
+          <input id="equipOptionsSlotsInput" type="number" min="0" value="8">
         </div>
         <div id="failed">
           <label id="equipOptionsFailedLabel">Number of failed slots: </label>
-          <input id="equipOptionsFailedInput" type="number" min="0" max="0">
+          <input id="equipOptionsFailedInput" type="number" min="0" max="0" value="0">
         </div>
         <div id="costPerClick">
           <label id="equipOptionsCostPerClickLabel">Cost per click: </label>
-          <input id="equipOptionsCostPerClickInput" type="number">
+          <input id="equipOptionsCostPerClickInput" type="number" value="1350">
         </div>
       </div>
       <div id="equipOptionsActions">
@@ -34,7 +34,7 @@
       <div id="simOptionsInput">
         <div id="failsToInno">
           <label id="simOptionsFailsToInnoLabel">Number of failed slots before using Inno Scrolls: </label>
-          <input id="simOptionsFailsToInnoInput" type="number" min="0" max="0">
+          <input id="simOptionsFailsToInnoInput" type="number" min="0" max="0" value="4">
         </div>
         <div id="useArkInno">
           <label id="simOptionsUseArkInnoLabel">Use Ark Inno Scrolls: </label>
@@ -66,7 +66,7 @@
             <option value="Css1p">Pure Clean Slate Scroll 1%</option>
             <option value="Css3p">Pure Clean Slate Scroll 3%</option>
             <option value="Css5p">Pure Clean Slate Scroll 5%</option>
-            <option value="Css10p">Pure Clean Slate Scroll 10%</option>
+            <option value="Css10p" selected>Pure Clean Slate Scroll 10%</option>
             <option value="Css20p">Pure Clean Slate Scroll 20%</option>
           </select>
         </div>
@@ -75,7 +75,7 @@
           <select id="simOptionsUseInnoTypeInput">
             <option value="Inno20p">Innocence Scroll 20%</option>
             <option value="Inno40p">Innocence Scroll 40%</option>
-            <option value="Inno50p">Innocence Scroll 50%</option>
+            <option value="Inno50p" selected>Innocence Scroll 50%</option>
             <option value="Inno60p">Innocence Scroll 60%</option>
             <option value="Inno70p">Innocence Scroll 70%</option>
           </select>
@@ -86,7 +86,7 @@
             <option value="Trace100p">100% Success Rate Enhancement</option>
             <option value="Trace70p">70% Success Rate Enhancement</option>
             <option value="Trace30p">30% Success Rate Enhancement</option>
-            <option value="Trace15p">15% Success Rate Enhancement</option>
+            <option value="Trace15p" selected>15% Success Rate Enhancement</option>
           </select>
         </div>
         <div id="hasFever">
@@ -193,7 +193,7 @@
           <div id="customPercentileStatsTitle">Get stats for a custom percentile instead: </div>
           <div id="customPercentileStatsForm">
             <label id="customPercentileStatsLabel">Custom percentile to display: </label>
-            <input id="customPercentileStatsInput" type="number" step="0.01" min="0" max="1">
+            <input id="customPercentileStatsInput" type="number" step="1" min="0" max="100"> %
             <button id="customPercentileSubmitButton">Get percentile</button>
           </div>
           <div id="customPercentileTracesStatsResult">
