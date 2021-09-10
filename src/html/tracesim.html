@@ -1,8 +1,12 @@
 <!DOCTYPE html>
+
+<meta charset="UTF-8">
+
 <html>
 
   <head>
     <title>MapleStory Trace Simulator</title>
+    <script src="../scripts/main.js" type="module"></script>
   </head>
 
   <body>
@@ -18,7 +22,7 @@
           <input id="equipOptionsFailedInput" type="number" min="0" max="0" value="0">
         </div>
         <div id="costPerClick">
-          <label id="equipOptionsCostPerClickLabel">Cost per click: </label>
+          <label id="equipOptionsCostPerClickLabel">Spell Trace cost per click: </label>
           <input id="equipOptionsCostPerClickInput" type="number" value="1350">
         </div>
       </div>
@@ -48,6 +52,7 @@
           <label id="simOptionsUseSpellTraceCssLabel">Use CSSs from Spell Traces: </label>
           <input id="simOptionsUseSpellTraceCssInput" type="checkbox">
         </div>
+        <div id="simOptionsCostNote">Note: It is okay to leave these values as 0 or blank if you don't want Mesos cost estimations.</div>
         <div id="cssCost">
           <label id="simOptionsCssCostLabel">Cost per CSS in Mesos: </label>
           <input id="simOptionsCssCostInput" type="number">
@@ -146,7 +151,7 @@
       <div id="bulkSimOptions">
         <div id="bulkSimOptionsIterations">
           <label id="bulkSimOptionsIterationsLabel">Number of times the simulation should repeat: </label>
-          <input id="bulkSimOptionsIterationsInput" type="number">
+          <input id="bulkSimOptionsIterationsInput" type="number" value="1000">
         </div>
       </div>
       <div id="bulkSimActions">
