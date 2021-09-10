@@ -7,6 +7,7 @@
 
   <body>
     <div id="equipOptions">
+      <div id="equipOptionsTitle">Equip Options</div>
       <div id="equipOptionsInput">
         <div id="slots">
           <label id="equipOptionsSlotsLabel">Total number of slots: </label>
@@ -22,37 +23,189 @@
         </div>
       </div>
       <div id="equipOptionsActions">
-        <div id="equipOptionsReset"></div>
+        <div id="equipOptionsReset">
+          <button id="equipOptionsResetButton">Reset equip options</button>
+        </div>
       </div>
     </div>
 
     <div id="simOptions">
+      <div id="simOptionsTitle">Simulation Options</div>
       <div id="simOptionsInput">
-        <div id="failsToInno"></div>
-        <div id="useArkInno"></div>
-        <div id="useSpellTraceInno"></div>
-        <div id="useSpellTraceCss"></div>
-        <div id="cssCost"></div>
-        <div id="innoCost"></div>
-        <div id="traceCost"></div>
-        <div id="useCssType"></div>
-        <div id="useInnoType"></div>
-        <div id="traceType"></div>
-        <div id="hasFever"></div>
-        <div id="hasDiscount"></div>
-        <div id="diligenceLevel"></div>
-        <div id="guildEnhancementMasteryBonus"></div>
-        <div id="guildUpgradeSalvationLevel"></div>
+        <div id="failsToInno">
+          <label id="simOptionsFailsToInnoLabel">Number of failed slots before using Inno Scrolls: </label>
+          <input id="simOptionsFailsToInnoInput" type="number" min="0" max="0">
+        </div>
+        <div id="useArkInno">
+          <label id="simOptionsUseArkInnoLabel">Use Ark Inno Scrolls: </label>
+          <input id="simOptionsUseArkInnoInput" type="checkbox">
+        </div>
+        <div id="useSpellTraceInno">
+          <label id="simOptionsUseSpellTraceInnoLabel">Use Inno Scrolls from Spell Traces: </label>
+          <input id="simOptionsUseSpellTraceInnoInput" type="checkbox">
+        </div>
+        <div id="useSpellTraceCss">
+          <label id="simOptionsUseSpellTraceCssLabel">Use CSSs from Spell Traces: </label>
+          <input id="simOptionsUseSpellTraceCssInput" type="checkbox">
+        </div>
+        <div id="cssCost">
+          <label id="simOptionsCssCostLabel">Cost per CSS in Mesos: </label>
+          <input id="simOptionsCssCostInput" type="number">
+        </div>
+        <div id="innoCost">
+          <label id="simOptionsInnoCostLabel">Cost per Inno Scroll in Mesos: </label>
+          <input id="simOptionsInnoCostInput" type="number">
+        </div>
+        <div id="traceCost">
+          <label id="simOptionsTraceCostLabel">Cost per Spell Trace in Mesos: </label>
+          <input id="simOptionsTraceCostInput" type="number">
+        </div>
+        <div id="useCssType">
+          <label id="simOptionsUseCssTypeLabel">CSS type: </label>
+          <select id="simOptionsUseCssTypeInput">
+            <option value="Css1p">Pure Clean Slate Scroll 1%</option>
+            <option value="Css3p">Pure Clean Slate Scroll 3%</option>
+            <option value="Css5p">Pure Clean Slate Scroll 5%</option>
+            <option value="Css10p">Pure Clean Slate Scroll 10%</option>
+            <option value="Css20p">Pure Clean Slate Scroll 20%</option>
+          </select>
+        </div>
+        <div id="useInnoType">
+          <label id="simOptionsUseInnoTypeLabel">Inno Scroll type: </label>
+          <select id="simOptionsUseInnoTypeInput">
+            <option value="Inno20p">Innocence Scroll 20%</option>
+            <option value="Inno40p">Innocence Scroll 40%</option>
+            <option value="Inno50p">Innocence Scroll 50%</option>
+            <option value="Inno60p">Innocence Scroll 60%</option>
+            <option value="Inno70p">Innocence Scroll 70%</option>
+          </select>
+        </div>
+        <div id="traceType">
+          <label id="simOptionsTraceTypeLabel">Spell Trace Enhancement type: </label>
+          <select id="simOptionsTraceTypeInput">
+            <option value="Trace100p">100% Success Rate Enhancement</option>
+            <option value="Trace70p">70% Success Rate Enhancement</option>
+            <option value="Trace30p">30% Success Rate Enhancement</option>
+            <option value="Trace15p">15% Success Rate Enhancement</option>
+          </select>
+        </div>
+        <div id="hasFever">
+          <label id="simOptionsHasFeverLabel">Fever Time: </label>
+          <input id="simOptionsHasFeverInput" type="checkbox">
+        </div>
+        <div id="hasDiscount">
+          <label id="simOptionsHasDiscountLabel">50% Spell Trace cost discount: </label>
+          <input id="simOptionsHasDiscountInput" type="checkbox">
+        </div>
+        <div id="diligenceLevel">
+          <label id="simOptionsDiligenceLevelLabel">Diligence bonus: </label>
+          <select id="simOptionsDiligenceLevelInput">
+            <option value="DiligenceLv0">Diligence Lv0 (+0%)</option>
+            <option value="DiligenceLv10">Diligence Lv10 (+1%)</option>
+            <option value="DiligenceLv20">Diligence Lv20 (+2%)</option>
+            <option value="DiligenceLv30">Diligence Lv30 (+3%)</option>
+            <option value="DiligenceLv40">Diligence Lv40 (+4%)</option>
+            <option value="DiligenceLv50">Diligence Lv50 (+5%)</option>
+            <option value="DiligenceLv60">Diligence Lv60 (+6%)</option>
+            <option value="DiligenceLv70">Diligence Lv70 (+7%)</option>
+            <option value="DiligenceLv80">Diligence Lv80 (+8%)</option>
+            <option value="DiligenceLv90">Diligence Lv90 (+9%)</option>
+            <option value="DiligenceLv100">Diligence Lv100 (+10%)</option>
+          </select>
+        </div>
+        <div id="guildEnhancementMasteryBonus">
+          <label id="simOptionsGuildEnhancementMasteryBonusLabel">Guild Enhancement Mastery Bonus: </label>
+          <select id="simOptionsGuildEnhancementMasteryBonusInput">
+            <option value="EnhanceMasteryLv0">Enhancement Mastery Lv0 (+0%)</option>
+            <option value="EnhanceMasteryLv1">Enhancement Mastery Lv1 (+1%)</option>
+            <option value="EnhanceMasteryLv2">Enhancement Mastery Lv2 (+2%)</option>
+            <option value="EnhanceMasteryLv3">Enhancement Mastery Lv3 (+3%)</option>
+            <option value="EnhanceMasteryLv4">Enhancement Mastery Lv4 (+4%)</option>
+          </select>
+        </div>
+        <div id="guildUpgradeSalvationLevel">
+          <label id="simOptionsGuildUpgradeSalvationLevelLabel">Guild Upgrade Salvation Level: </label>
+          <select id="simOptionsGuildUpgradeSalvationLevelInput">
+            <option value="UpgradeSalvationLv0">Upgrade Salvatiion Lv0 (0%)</option>
+            <option value="UpgradeSalvationLv1">Upgrade Salvatiion Lv1 (1%)</option>
+            <option value="UpgradeSalvationLv2">Upgrade Salvatiion Lv2 (2%)</option>
+            <option value="UpgradeSalvationLv3">Upgrade Salvatiion Lv3 (3%)</option>
+            <option value="UpgradeSalvationLv4">Upgrade Salvatiion Lv4 (4%)</option>
+          </select>
+        </div>
       </div>
       <div id="simOptionsActions">
-        <div id="simOptionsReset"></div>
+        <div id="simOptionsReset">
+          <button id="simOptionsResetButton">Reset simulation options</button>
+        </div>
       </div>
     </div>
 
     <div id="bulkSim">
-      <div id="bulkSimOptions"></div>
-      <div id="bulkSimActions"></div>
-      <div id="bulkSimResult"></div>
+      <div id="bulkSimTitle">Bulk Simulation</div>
+      <div id="bulkSimOptions">
+        <div id="bulkSimOptionsIterations">
+          <label id="bulkSimOptionsIterationsLabel">Number of times the simulation should repeat: </label>
+          <input id="bulkSimOptionsIterationsInput" type="number">
+        </div>
+      </div>
+      <div id="bulkSimActions">
+        <div id="bulkSimActionsStart">
+          <button id="bulkSimActionsStartAbortButton">Start</button>
+        </div>
+      </div>
+      <div id="bulkSimResult">
+        <div id="bulkSimResultTitle">Result: </div>
+        <div id="spellTracesStats">
+          <div id="spellTracesStatsTitle">Spell Traces stats: </div>
+          <div id="averageTracesUsed">Average Spell Traces used: <span id="averageTracesUsedValue"> -- </span></div>
+          <div id="averageMesosUsedOnTraces">Average Mesos used on Spell Traces: <span id="averageMesosUsedOnTracesValue"> -- </span></div>
+          <div id="medianTracesUsed">Median Spell Traces used: <span id="medianTracesUsedValue"> -- </span></div>
+          <div id="medianMesosUsedOnTraces">Median Mesos used on Spell Traces: <span id="medianMesosUsedOnTracesValue"> -- </span></div>
+          <div id="tracesUsedIqr">Interquartile range of Spell Traces used: <span id="tracesUsedIqrValue"> -- </span></div>
+          <div id="mesosUsedOnTracesIqr">Interquartile range of Mesos used on Spell Traces: <span id="mesosUsedOnTracesIqrValue"> -- </span></div>
+        </div>
+        <div id="cssStats">
+          <div id="cssStatsTitle">CSS stats: </div>
+          <div id="averageCssUsed">Average CSSs used: <span id="averageCssUsedValue"> -- </span></div>
+          <div id="averageMesosUsedOnCss">Average Mesos used on CSSs: <span id="averageMesosUsedOnCssValue"> -- </span></div>
+          <div id="medianCssUsed">Median CSSs used: <span id="medianCssUsedValue"> -- </span></div>
+          <div id="medianMesosUsedOnCss">Median Mesos used on CSSs: <span id="medianMesosUsedOnCssValue"> -- </span></div>
+          <div id="cssUsedIqr">Interquartile range of CSSs used: <span id="cssUsedIqrValue"> -- </span></div>
+          <div id="mesosUsedOnCssIqr">Interquartile range of Mesos used on CSSs: <span id="mesosUsedOnCssIqrValue"> -- </span></div>
+        </div>
+        <div id="innoStats">
+          <div id="innoStatsTitle">Inno Scroll stats: </div>
+          <div id="averageInnoUsed">Average Inno Scrolls used: <span id="averageInnoUsedValue"> -- </span></div>
+          <div id="averageMesosUsedOnInno">Average Mesos used on Inno Scrolls: <span id="averageMesosUsedOnInnoValue"> -- </span></div>
+          <div id="medianInnoUsed">Median Inno Scrolls used: <span id="medianInnoUsedValue"> -- </span></div>
+          <div id="medianMesosUsedOnInno">Median Mesos used on Inno Scrolls: <span id="medianMesosUsedOnInnoValue"> -- </span></div>
+          <div id="innoUsedIqr">Interquartile range of Inno Scrolls used: <span id="innoUsedIqrValue"> -- </span></div>
+          <div id="mesosUsedOnInnoIqr">Interquartile range of Mesos used on Inno Scrolls: <span id="mesosUsedOnInnoIqrValue"> -- </span></div>
+        </div>
+        <div id="totalMesosStats">
+          <div id="totalMesosStatsTitle">Total Mesos stats: </div>
+          <div id="averageTotalMesosUsed">Average total Mesos used: <span id="averageTotalMesosUsedValue"> -- </span></div>
+          <div id="medianTotalMesosUsed">Median total Mesos used: <span id="medianTotalMesosUsedValue"> -- </span></div>
+          <div id="totalMesosUsedIqr">Interquartile range of total Mesos used: <span id="totalMesosUsedIqrValue"> -- </span></div>
+        </div>
+        <div id="customPercentileStats">
+          <div id="customPercentileStatsTitle">Get stats for a custom percentile instead: </div>
+          <div id="customPercentileStatsForm">
+            <label id="customPercentileStatsLabel">Custom percentile to display: </label>
+            <input id="customPercentileStatsInput" type="number" step="0.01" min="0" max="1">
+          </div>
+          <div id="customPercentileTracesStatsResult">
+            <div id="customPercentileTracesUsed"><span id="customTracesUsedPercentile"> -- </span>% Percentile for Spell Traces Used: <span id="customTracesUsedPercentileValue"> -- </span></div>
+            <div id="customPercentileMesosUsedOnTraces"><span id="customMesosUsedOnTracesPercentile"> -- </span>% Percentile for Mesos used on Spell Traces: <span id="customMesosUsedOnTracesPercentileValue"> -- </span></div>
+            <div id="customPercentileCssUsed"><span id="customCssUsedPercentile"> -- </span>% Percentile for CSS used: <span id="customCssUsedPercentileValue"> -- </span></div>
+            <div id="customPercentileMesosUsedOnCss"><span id="customMesosUsedOnCssPercentile"> -- </span>% Percentile for Mesos used on CSSs: <span id="customMesosUsedOnCssPercentileValue"> -- </span></div>
+            <div id="customPercentileInnoUsed"><span id="customInnoUsedPercentile"> -- </span>% Percentile for Inno Scrolls used: <span id="customInnoUsedPercentileValue"> -- </span></div>
+            <div id="customPercentileMesosUsedOnInno"><span id="customMesosUsedOnInnoPercentile"> -- </span>% Percentile for Mesos used on Inno Scrolls: <span id="customMesosUsedOnInnoPercentileValue"> -- </span></div>
+            <div id="customPercentileTotalMesosUsed"><span id="customTotalMesosUsedPercentile"> -- </span>% Percentile for total Mesos used: <span id="customTotalMesosUsedPercentileValue"> -- </span></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="singleSim">
