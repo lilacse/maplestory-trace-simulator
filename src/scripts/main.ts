@@ -1,3 +1,8 @@
+import { CssType, InnoType, TraceType } from "./enums/scroll-types";
+import { DiligenceLevel, GuildEnhancementMasteryLevel, GuildUpgradeSalvationLevel } from "./enums/trace-bonuses";
+import { Equipment } from "./modules/equipment";
+import { SimulationOptions, SimulationRun, SimulationTask } from "./modules/simulator";
+
 const equipOptionsSlotsInput = document.getElementById("equipOptionsSlotsInput") as HTMLInputElement;
 const equipOptionsFailedInput = document.getElementById("equipOptionsFailedInput") as HTMLInputElement;
 const equipOptionsCostPerClickInput = document.getElementById("equipOptionsCostPerClickInput") as HTMLInputElement;
@@ -28,6 +33,8 @@ const bulkSimActionsStartAbortButton = document.getElementById("bulkSimActionsSt
 
 const bulkSimResult = document.getElementById("bulkSimResult") as HTMLDivElement;
 
+const minTracesUsedValue = document.getElementById("minTracesUsedValue") as HTMLSpanElement;
+const maxTracesUsedValue = document.getElementById("maxTracesUsedValue") as HTMLSpanElement;
 const averageTracesUsedValue = document.getElementById("averageTracesUsedValue") as HTMLSpanElement;
 const averageMesosUsedOnTracesValue = document.getElementById("averageMesosUsedOnTracesValue") as HTMLSpanElement;
 const medianTracesUsedValue = document.getElementById("medianTracesUsedValue") as HTMLSpanElement;
@@ -35,6 +42,8 @@ const medianMesosUsedOnTracesValue = document.getElementById("medianMesosUsedOnT
 const tracesUsedIqrValue = document.getElementById("tracesUsedIqrValue") as HTMLSpanElement;
 const mesosUsedOnTracesIqrValue = document.getElementById("mesosUsedOnTracesIqrValue") as HTMLSpanElement;
 
+const minCssUsedValue = document.getElementById("minCssUsedValue") as HTMLSpanElement;
+const maxCssUsedValue = document.getElementById("maxCssUsedValue") as HTMLSpanElement;
 const averageCssUsedValue = document.getElementById("averageCssUsedValue") as HTMLSpanElement;
 const averageMesosUsedOnCssValue = document.getElementById("averageMesosUsedOnCssValue") as HTMLSpanElement;
 const medianCssUsedValue = document.getElementById("medianCssUsedValue") as HTMLSpanElement;
@@ -42,6 +51,8 @@ const medianMesosUsedOnCssValue = document.getElementById("medianMesosUsedOnCssV
 const cssUsedIqrValue = document.getElementById("cssUsedIqrValue") as HTMLSpanElement;
 const mesosUsedOnCssIqrValue = document.getElementById("mesosUsedOnCssIqrValue") as HTMLSpanElement;
 
+const minInnoUsedValue = document.getElementById("minInnoUsedValue") as HTMLSpanElement;
+const maxInnoUsedValue = document.getElementById("maxInnoUsedValue") as HTMLSpanElement;
 const averageInnoUsedValue = document.getElementById("averageInnoUsedValue") as HTMLSpanElement;
 const averageMesosUsedOnInnoValue = document.getElementById("averageMesosUsedOnInnoValue") as HTMLSpanElement;
 const medianInnoUsedValue = document.getElementById("medianInnoUsedValue") as HTMLSpanElement;
@@ -49,6 +60,8 @@ const medianMesosUsedOnInnoValue = document.getElementById("medianMesosUsedOnInn
 const innoUsedIqrValue = document.getElementById("innoUsedIqrValue") as HTMLSpanElement;
 const mesosUsedOnInnoIqrValue = document.getElementById("mesosUsedOnInnoIqrValue") as HTMLSpanElement;
 
+const minMesosUsedValue = document.getElementById("minMesosUsedValue") as HTMLSpanElement;
+const maxMesosUsedValue = document.getElementById("maxMesosUsedValue") as HTMLSpanElement;
 const averageTotalMesosUsedValue = document.getElementById("averageTotalMesosUsedValue") as HTMLSpanElement;
 const medianTotalMesosUsedValue = document.getElementById("medianTotalMesosUsedValue") as HTMLSpanElement;
 const totalMesosUsedIqrValue = document.getElementById("totalMesosUsedIqrValue") as HTMLSpanElement;
@@ -96,5 +109,72 @@ function resetSimOptions(): void {
   simOptionsGuildUpgradeSalvationLevelInput.value = "UpgradeSalvationLv0";
 }
 
+function startBulkSimulation(): void {
+  let equip = new Equipment(Number(equipOptionsSlotsInput.value), 
+    Number(equipOptionsFailedInput.value), 
+    Number(equipOptionsCostPerClickInput.value));
+  
+  let simOptions = new SimulationOptions();
+  simOptions.failsToInno = Number(simOptionsFailsToInnoInput.value);
+  simOptions.useArkInno = simOptionsUseArkInnoInput.checked;
+  simOptions.useSpellTraceInno = simOptionsUseSpellTraceInnoInput.checked;
+  simOptions.useSpellTraceCss = simOptionsUseSpellTraceCssInput.checked;
+  simOptions.cssCost = Number(simOptionsCssCostInput.value);
+  simOptions.innoCost = Number(simOptionsInnoCostInput.value);
+  simOptions.traceCost = Number(simOptionsTraceCostInput.value);
+  simOptions.useCssType = CssType[simOptionsUseCssTypeInput.value as keyof typeof CssType];
+  simOptions.useInnoType = InnoType[simOptionsUseInnoTypeInput.value as keyof typeof InnoType];
+  simOptions.traceType = TraceType[simOptionsTraceTypeInput.value as keyof typeof TraceType];
+  simOptions.hasFever = simOptionsHasFeverInput.checked;
+  simOptions.hasDiscount = simOptionsHasDiscountInput.checked;
+  simOptions.diligenceLevel = DiligenceLevel[simOptionsDiligenceLevelInput.value as keyof typeof DiligenceLevel];
+  simOptions.guildEnhancementMasteryBonus = GuildEnhancementMasteryLevel[simOptionsGuildEnhancementMasteryBonusInput.value as keyof typeof GuildEnhancementMasteryLevel];
+  simOptions.guildUpgradeSalvationLevel = GuildUpgradeSalvationLevel[simOptionsGuildUpgradeSalvationLevelInput.value as keyof typeof GuildUpgradeSalvationLevel];
+
+  let simTask = new SimulationTask(equip, simOptions, Number(bulkSimOptionsIterationsInput.value));
+
+  let simResult = simTask.runSimulation();
+
+  console.log("Result: ");
+  console.log("Traces used record: " + simResult.tracesUsedRecord);
+  console.log("CSSs used record: " + simResult.cssUsedRecord);
+  console.log("Innos used record: " + simResult.innoUsedRecord);
+  console.log("Mesos used record: " + simResult.totalMesosUsedRecord);
+
+  minTracesUsedValue.innerHTML = simResult.minTracesUsed.toString();
+  maxTracesUsedValue.innerHTML = simResult.maxTracesUsed.toString();
+  averageTracesUsedValue.innerHTML = simResult.averageTracesUsed.toString();
+  averageMesosUsedOnTracesValue.innerHTML = simResult.averageMesosUsedOnTraces.toString();
+  medianTracesUsedValue.innerHTML = simResult.medianTracesUsed.toString();
+  medianMesosUsedOnTracesValue.innerHTML = simResult.medianMesosUsedOnTraces.toString();
+  tracesUsedIqrValue.innerHTML = simResult.tracesIqr.toString();
+  mesosUsedOnTracesIqrValue.innerHTML = simResult.mesosUsedOnTracesIqr.toString();
+
+  minCssUsedValue.innerHTML = simResult.minCssUsed.toString();
+  maxCssUsedValue.innerHTML = simResult.maxCssUsed.toString();
+  averageCssUsedValue.innerHTML = simResult.averageCssUsed.toString();
+  averageMesosUsedOnCssValue.innerHTML = simResult.averageMesosUsedOnCss.toString();
+  medianCssUsedValue.innerHTML = simResult.medianCssUsed.toString();
+  medianMesosUsedOnCssValue.innerHTML = simResult.medianMesosUsedOnCss.toString();
+  cssUsedIqrValue.innerHTML = simResult.cssUsedIqr.toString();
+  mesosUsedOnCssIqrValue.innerHTML = simResult.mesosUsedOnCssIqr.toString();
+
+  minInnoUsedValue.innerHTML = simResult.minInnoUsed.toString();
+  maxInnoUsedValue.innerHTML = simResult.maxInnoUsed.toString();
+  averageInnoUsedValue.innerHTML = simResult.averageInnoUsed.toString();
+  averageMesosUsedOnInnoValue.innerHTML = simResult.averageMesosUsedOnInno.toString();
+  medianInnoUsedValue.innerHTML = simResult.medianInnoUsed.toString();
+  medianMesosUsedOnInnoValue.innerHTML = simResult.medianMesosUsedOnInno.toString();
+  innoUsedIqrValue.innerHTML = simResult.innoUsedIqr.toString();
+  mesosUsedOnInnoIqrValue.innerHTML = simResult.mesosUsedOnInnoIqr.toString();
+
+  minMesosUsedValue.innerHTML = simResult.minMesosUsed.toString();
+  maxMesosUsedValue.innerHTML = simResult.maxMesosUsed.toString();
+  averageTotalMesosUsedValue.innerHTML = simResult.averageTotalMesosUsed.toString();
+  medianTotalMesosUsedValue.innerHTML = simResult.medianTotalMesosUsed.toString();
+  totalMesosUsedIqrValue.innerHTML = simResult.totalMesosUsedIqr.toString();
+}
+
 equipOptionsResetButton.onclick = resetEquipOptions;
 simOptionsResetButton.onclick = resetSimOptions;
+bulkSimActionsStartAbortButton.onclick = startBulkSimulation;

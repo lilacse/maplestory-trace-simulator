@@ -292,6 +292,8 @@ export class SimulationTaskResult {
   public maxCssUsed: number = -Infinity;
   public minInnoUsed: number = Infinity;
   public maxInnoUsed: number = -Infinity;
+  public minMesosUsed: number = Infinity;
+  public maxMesosUsed: number = -Infinity;
 
   private _totalTracesUsed: number = 0;
   private _totalCssUsed: number = 0;
@@ -318,6 +320,8 @@ export class SimulationTaskResult {
     let mesosUsedForRun: number = this.getMesosUsedForRun(run);
     this.totalMesosUsedRecord.push(mesosUsedForRun);
     this._totalMesosUsed += mesosUsedForRun;
+    this.minMesosUsed = this.minMesosUsed > mesosUsedForRun ? mesosUsedForRun : this.minMesosUsed;
+    this.maxMesosUsed = this.maxMesosUsed < mesosUsedForRun ? mesosUsedForRun : this.maxMesosUsed;
   }
 
   private getMesosUsedForRun(run: SimulationRun): number {
@@ -326,59 +330,59 @@ export class SimulationTaskResult {
       + run.innoUsed * this._optionsRef.innoCost
   }
 
-  public getAverageTracesUsed(): number {
+  public get averageTracesUsed(): number {
     return this._totalTracesUsed / this.tracesUsedRecord.length;
   }
 
-  public getAverageMesosUsedOnTraces(): number {
-    return this.getAverageTracesUsed() * this._optionsRef.traceCost;
+  public get averageMesosUsedOnTraces(): number {
+    return this.averageTracesUsed * this._optionsRef.traceCost;
   }
 
-  public getAverageCssUsed(): number {
+  public get averageCssUsed(): number {
     return this._totalCssUsed / this.cssUsedRecord.length;
   }
 
-  public getAverageMesosUsedOnCss(): number {
-    return this.getAverageCssUsed() * this._optionsRef.cssCost;
+  public get averageMesosUsedOnCss(): number {
+    return this.averageCssUsed * this._optionsRef.cssCost;
   }
 
-  public getAverageInnoUsed(): number {
+  public get averageInnoUsed(): number {
     return this._totalInnoUsed / this.innoUsedRecord.length;
   }
 
-  public getAverageMesosUsedOnInno(): number {
-    return this.getAverageInnoUsed() * this._optionsRef.innoCost;
+  public get averageMesosUsedOnInno(): number {
+    return this.averageInnoUsed * this._optionsRef.innoCost;
   }
 
-  public getAverageTotalMesosUsed(): number {
+  public get averageTotalMesosUsed(): number {
     return this._totalMesosUsed / this.totalMesosUsedRecord.length
   }
 
-  public getMedianTracesUsed(): number {
+  public get medianTracesUsed(): number {
     return this.getTracesPercentile(0.5);
   }
 
-  public getMedianMesosUsedOnTraces(): number {
-    return this.getMedianTracesUsed() * this._optionsRef.traceCost;
+  public get medianMesosUsedOnTraces(): number {
+    return this.medianTracesUsed * this._optionsRef.traceCost;
   }
 
-  public getMedianCssUsed(): number {
+  public get medianCssUsed(): number {
     return this.getCssPercentile(0.5);
   }
 
-  public getMedianMesosUsedOnCss(): number {
-    return this.getMedianCssUsed() * this._optionsRef.cssCost;
+  public get medianMesosUsedOnCss(): number {
+    return this.medianCssUsed * this._optionsRef.cssCost;
   } 
 
-  public getMedianInnoUsed(): number {
+  public get medianInnoUsed(): number {
     return this.getInnoPercentile(0.5);
   }
 
-  public getMedianMesosUsedOnInno(): number {
-    return this.getMedianInnoUsed() * this._optionsRef.innoCost;
+  public get medianMesosUsedOnInno(): number {
+    return this.medianInnoUsed * this._optionsRef.innoCost;
   }
 
-  public getMedianTotalMesosUsed(): number {
+  public get medianTotalMesosUsed(): number {
     return this.getTotalMesosUsedPercentile(0.5);
   }
 
@@ -410,31 +414,31 @@ export class SimulationTaskResult {
     return this.getInnoPercentile(percentile) * this._optionsRef.innoCost;
   }
 
-  public getTracesIqr(): number {
+  public get tracesIqr(): number {
     return this.getTracesPercentile(0.75) - this.getTracesPercentile(0.25);
   }
 
-  public getMesosUsedOnTracesIqr(): number {
-    return this.getTracesIqr() * this._optionsRef.traceCost;
+  public get mesosUsedOnTracesIqr(): number {
+    return this.tracesIqr * this._optionsRef.traceCost;
   }
 
-  public getCssUsedIqr(): number {
+  public get cssUsedIqr(): number {
     return this.getCssPercentile(0.75) - this.getCssPercentile(0.25);
   }
 
-  public getMesosUsedOnCssIqr(): number {
-    return this.getCssUsedIqr() * this._optionsRef.cssCost;
+  public get mesosUsedOnCssIqr(): number {
+    return this.cssUsedIqr * this._optionsRef.cssCost;
   }
 
-  public getInnoUsedIqr(): number {
+  public get innoUsedIqr(): number {
     return this.getInnoPercentile(0.75) - this.getInnoPercentile(0.25);
   }
 
-  public getMesosUsedOnInnoIqr(): number {
-    return this.getInnoUsedIqr() * this._optionsRef.innoCost;
+  public get mesosUsedOnInnoIqr(): number {
+    return this.innoUsedIqr * this._optionsRef.innoCost;
   }
 
-  public getTotalMesosUsedIqr(): number {
+  public get totalMesosUsedIqr(): number {
     return this.getTotalMesosUsedPercentile(0.75) - this.getTotalMesosUsedPercentile(0.25);
   }
 
@@ -444,9 +448,11 @@ export class SimulationTaskResult {
     if (list.length == 0) throw "Percentile could not be calculated from empty list.";
     if (percentile < 0 || percentile > 1) throw "Percentile must be between 0 and 1 (inclusive).";
 
-    let pos = this.tracesUsedRecord.length - 1 * percentile + 1;
-    let pos_floor = Math.floor(percentile);
-    let pos_ceil = Math.ceil(percentile);
+    list.sort();
+
+    let pos: number = (list.length - 1) * percentile;
+    let pos_floor: number = Math.floor(pos);
+    let pos_ceil: number = Math.ceil(pos);
 
     return list[pos_floor] + (pos - pos_floor) * (list[pos_ceil] - list[pos_floor]);
   }
