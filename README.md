@@ -11,6 +11,3 @@ Todo list:
 Low priority: 
 - [ ] Lucky day scroll support
 - [ ] Guardian Angel support 
-
-Current issues: 
-- [ ] Percentile function is incorrect. (Affects median/IQR/custom percentile)
