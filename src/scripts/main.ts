@@ -1,7 +1,9 @@
 import { CssType, InnoType, TraceType } from "./enums/scroll-types";
 import { DiligenceLevel, GuildEnhancementMasteryLevel, GuildUpgradeSalvationLevel } from "./enums/trace-bonuses";
 import { Equipment } from "./modules/equipment";
-import { SimulationOptions, SimulationRun, SimulationTask } from "./modules/simulator";
+import { SimulationOptions, SimulationRun, SimulationTask, SimulationTaskResult } from "./modules/simulator";
+
+//#region Consts of HTML elements
 
 const equipOptionsSlotsInput = document.getElementById("equipOptionsSlotsInput") as HTMLInputElement;
 const equipOptionsFailedInput = document.getElementById("equipOptionsFailedInput") as HTMLInputElement;
@@ -85,6 +87,12 @@ const customInnoUsedPercentileValue = document.getElementById("customInnoUsedPer
 const customMesosUsedOnInnoPercentileValue = document.getElementById("customMesosUsedOnInnoPercentileValue") as HTMLSpanElement;
 const customTotalMesosUsedPercentileValue = document.getElementById("customTotalMesosUsedPercentileValue") as HTMLSpanElement;
 
+//#endregion
+
+//#region Globals
+let simResult: SimulationTaskResult|null = null;
+//#endregion
+
 function resetEquipOptions(): void {
   equipOptionsSlotsInput.value = "0";
   equipOptionsFailedInput.value = "0";
@@ -133,7 +141,7 @@ function startBulkSimulation(): void {
 
   let simTask = new SimulationTask(equip, simOptions, Number(bulkSimOptionsIterationsInput.value));
 
-  let simResult = simTask.runSimulation();
+  simResult = simTask.runSimulation();
 
   console.log("Result: ");
   console.log("Traces used record: " + simResult.tracesUsedRecord);
@@ -175,6 +183,28 @@ function startBulkSimulation(): void {
   totalMesosUsedIqrValue.innerHTML = simResult.totalMesosUsedIqr.toString();
 }
 
+function displayCustomPercentile(): void {
+  let percentile: number = Number(customPercentileStatsInput.value)
+  let percentile_float: number = percentile / 100;
+
+  customTracesUsedPercentile.innerHTML = percentile.toString();
+  customMesosUsedOnTracesPercentile.innerHTML = percentile.toString();
+  customCssUsedPercentile.innerHTML = percentile.toString();
+  customMesosUsedOnCssPercentile.innerHTML = percentile.toString();
+  customInnoUsedPercentile.innerHTML = percentile.toString();
+  customMesosUsedOnInnoPercentile.innerHTML = percentile.toString();
+  customTotalMesosUsedPercentile.innerHTML = percentile.toString();
+
+  customTracesUsedPercentileValue.innerHTML = simResult!!.getTracesPercentile(percentile_float).toString();
+  customMesosUsedOnTracesPercentileValue.innerHTML = simResult!!.getMesosUsedOnTracesPercentile(percentile_float).toString();
+  customCssUsedPercentileValue.innerHTML = simResult!!.getCssPercentile(percentile_float).toString();
+  customMesosUsedOnCssPercentileValue.innerHTML = simResult!!.getMesosUsedOnCssPercentile(percentile_float).toString();
+  customInnoUsedPercentileValue.innerHTML = simResult!!.getInnoPercentile(percentile_float).toString();
+  customMesosUsedOnInnoPercentileValue.innerHTML = simResult!!.getMesosUsedOnInnoPercentile(percentile_float).toString();
+  customTotalMesosUsedPercentileValue.innerHTML = simResult!!.getTotalMesosUsedPercentile(percentile_float).toString();
+}
+
 equipOptionsResetButton.onclick = resetEquipOptions;
 simOptionsResetButton.onclick = resetSimOptions;
 bulkSimActionsStartAbortButton.onclick = startBulkSimulation;
+customPercentileSubmitButton.onclick = displayCustomPercentile;
