@@ -448,7 +448,7 @@ export class SimulationTaskResult {
     if (list.length == 0) throw "Percentile could not be calculated from empty list.";
     if (percentile < 0 || percentile > 1) throw "Percentile must be between 0 and 1 (inclusive).";
 
-    list.sort();
+    list.sort((a, b) => a - b);
 
     let pos: number = (list.length - 1) * percentile;
     let pos_floor: number = Math.floor(pos);
