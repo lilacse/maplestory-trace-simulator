@@ -181,6 +181,8 @@ function startBulkSimulation(): void {
   averageTotalMesosUsedValue.innerHTML = simResult.averageTotalMesosUsed.toString();
   medianTotalMesosUsedValue.innerHTML = simResult.medianTotalMesosUsed.toString();
   totalMesosUsedIqrValue.innerHTML = simResult.totalMesosUsedIqr.toString();
+
+  resetCustomPercentileDisplay();
 }
 
 function displayCustomPercentile(): void {
@@ -202,6 +204,26 @@ function displayCustomPercentile(): void {
   customInnoUsedPercentileValue.innerHTML = simResult!!.getInnoPercentile(percentile_float).toString();
   customMesosUsedOnInnoPercentileValue.innerHTML = simResult!!.getMesosUsedOnInnoPercentile(percentile_float).toString();
   customTotalMesosUsedPercentileValue.innerHTML = simResult!!.getTotalMesosUsedPercentile(percentile_float).toString();
+}
+
+function resetCustomPercentileDisplay(): void {
+  customPercentileStatsInput.value = "";
+
+  customTracesUsedPercentile.innerHTML = " -- ";
+  customMesosUsedOnTracesPercentile.innerHTML = " -- ";
+  customCssUsedPercentile.innerHTML = " -- ";
+  customMesosUsedOnCssPercentile.innerHTML = " -- ";
+  customInnoUsedPercentile.innerHTML = " -- ";
+  customMesosUsedOnInnoPercentile.innerHTML = " -- ";
+  customTotalMesosUsedPercentile.innerHTML = " -- ";
+
+  customTracesUsedPercentileValue.innerHTML = " -- ";
+  customMesosUsedOnTracesPercentileValue.innerHTML = " -- ";
+  customCssUsedPercentileValue.innerHTML = " -- ";
+  customMesosUsedOnCssPercentileValue.innerHTML = " -- ";
+  customInnoUsedPercentileValue.innerHTML = " -- ";
+  customMesosUsedOnInnoPercentileValue.innerHTML = " -- ";
+  customTotalMesosUsedPercentileValue.innerHTML = " -- ";
 }
 
 equipOptionsResetButton.onclick = resetEquipOptions;
