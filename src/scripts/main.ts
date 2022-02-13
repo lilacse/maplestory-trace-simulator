@@ -6,6 +6,7 @@ import { SimulationOptions, SimulationRun, SimulationTask, SimulationTaskResult 
 //#region Consts of HTML elements
 
 const equipOptionsSlotsInput = document.getElementById("equipOptionsSlotsInput") as HTMLInputElement;
+const equipOptionsSuccededInput = document.getElementById("equipOptionsSucceededInput") as HTMLInputElement;
 const equipOptionsFailedInput = document.getElementById("equipOptionsFailedInput") as HTMLInputElement;
 const equipOptionsCostPerClickInput = document.getElementById("equipOptionsCostPerClickInput") as HTMLInputElement;
 
@@ -119,6 +120,7 @@ function resetSimOptions(): void {
 
 function startBulkSimulation(): void {
   let equip = new Equipment(Number(equipOptionsSlotsInput.value), 
+    Number(equipOptionsSuccededInput.value),
     Number(equipOptionsFailedInput.value), 
     Number(equipOptionsCostPerClickInput.value));
   

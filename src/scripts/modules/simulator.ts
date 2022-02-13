@@ -33,7 +33,7 @@ export class SimulationRun {
     console.log();
     console.log("Equipment");
     console.log("=========");
-    console.log(`Number of upgrade slots: ${this._equip.remainingSlots}`);
+    console.log(`Number of upgrade slots: ${this._equip.currentRemainingSlots}`);
     console.log(`Traces used per click (before discount): ${this._equip.getCostPerClick(false)}`);
     console.log();
     console.log("Simulation Options");
@@ -97,7 +97,7 @@ export class SimulationRun {
   }
 
   get runCompleted(): boolean {
-    if (this._equip.remainingSlots == 0 && this._equip.failedSlots == 0) return true;
+    if (this._equip.currentRemainingSlots == 0 && this._equip.currentFailedSlots == 0) return true;
     else return false;
   }
 
@@ -112,13 +112,13 @@ export class SimulationRun {
   public nextStep(): SimulationStep {
     let rng = Math.random();
 
-    if (this._equip.failedSlots < this._options.failsToInno && this._equip.remainingSlots > 0) {
+    if (this._equip.currentFailedSlots < this._options.failsToInno && this._equip.currentRemainingSlots > 0) {
       return this.doTrace(rng);
     }
-    else if (this._equip.failedSlots >= this._options.failsToInno) {
+    else if (this._equip.currentFailedSlots >= this._options.failsToInno) {
       return this.doInno(rng);
     }
-    else if (this._equip.remainingSlots == 0 && this._equip.failedSlots > 0) {
+    else if (this._equip.currentRemainingSlots == 0 && this._equip.currentFailedSlots > 0) {
       return this.doCss(rng);
     }
 

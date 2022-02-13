@@ -4,32 +4,36 @@ export class Equipment {
   private _currentFailedSlots: number = 0;
   private _currentRemainingSlots: number = 0;
 
-  private readonly _slots: number;
-  private readonly _failed: number;
+  private readonly _totalSlotCount: number;
+  private readonly _succededSlotCount: number;
+  private readonly _failedSlotCount: number;
   private readonly _costPerClick: number;
 
-  constructor(slots: number, failed: number, costPerClick: number) {
-    if (failed > slots) {
-      throw "Number of failed slots more than the total number of slots!"
+  constructor(totalSlots: number, succeeded: number, failed: number, costPerClick: number) {
+    if (failed + succeeded > totalSlots) {
+      throw "Number of succeeded and failed slots more than the total number of slots!"
     }
       
-    this._slots = slots;
-    this._failed = failed;
-    this._currentRemainingSlots = slots;
+    this._totalSlotCount = totalSlots;
+    this._succededSlotCount = succeeded;
+    this._failedSlotCount = failed;
+
+    this._currentRemainingSlots = totalSlots - succeeded - failed;
+    this._currentFailedSlots = failed;
     this._costPerClick = costPerClick;
   }
 
-  get failedSlots(): number {
+  get currentFailedSlots(): number {
     return this._currentFailedSlots;
   }
 
-  get remainingSlots(): number {
+  get currentRemainingSlots(): number {
     return this._currentRemainingSlots;
   }
 
   resetEquip(): void {
-    this._currentRemainingSlots = this._slots;
-    this._currentFailedSlots = this._failed;
+    this._currentRemainingSlots = this._totalSlotCount - this._succededSlotCount - this._failedSlotCount;
+    this._currentFailedSlots = this._failedSlotCount;
   }
 
   getCostPerClick(hasDiscount: boolean = false): number {
@@ -59,6 +63,6 @@ export class Equipment {
 
   innoSuccess(): void {
     this._currentFailedSlots = 0;
-    this._currentRemainingSlots = this._slots;
+    this._currentRemainingSlots = this._totalSlotCount;
   }
 }
