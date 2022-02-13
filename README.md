@@ -13,4 +13,5 @@ Low priority:
 - [ ] Guardian Angel support 
 
 Current issues: 
-- [ ] Percentile function is incorrect. (Affects median/IQR/custom percentile)
+- [x] Percentile function is incorrect. (Affects median/IQR/custom percentile)
+- [ ] Cost to fix failed slots are not calculated correctly. 
