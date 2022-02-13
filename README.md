@@ -11,3 +11,6 @@ Todo list:
 Low priority: 
 - [ ] Lucky day scroll support
 - [ ] Guardian Angel support 
+
+Current Issues: 
+- [ ] Failed slots are incorrectly considered as independent slots instead of part of the total slots. 
