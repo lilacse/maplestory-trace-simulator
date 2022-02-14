@@ -1,0 +1,55 @@
+body {
+  font-family: sans-serif;
+}
+
+.section-box {
+  border-radius: 1vw;
+  margin: 1em;
+  padding: 1em;
+}
+
+.section-box--equip {
+  border: 2px solid salmon;
+}
+
+.section-box--sim-options {
+  border: 2px solid greenyellow;
+}
+
+.section-box--bulk-sim {
+  border: 2px solid skyblue;
+}
+
+.section-box--bulk-sim-result {
+  border: 2px solid plum;
+}
+
+.section-title {
+  font-size: large;
+  font-weight: bolder;
+  margin-bottom: 1.5em;
+}
+
+.subsection-title {
+  font-weight: bold;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+}
+
+.section-content-row {
+  margin-bottom: 0.5em;
+}
+
+.section-content-label {
+  float: left;
+  width: 40ch;
+  max-width: 80%;
+}
+
+.section-content-note {
+  font-style: italic;
+}
+
+.spacer {
+  height: 2em;
+}
