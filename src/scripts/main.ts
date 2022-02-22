@@ -92,6 +92,8 @@ const customTotalMesosUsedPercentileValue = document.getElementById("customTotal
 
 //#region Globals
 let simResult: SimulationTaskResult|null = null;
+
+const numberConverter: Intl.NumberFormat = Intl.NumberFormat();
 //#endregion
 
 function resetEquipOptions(): void {
@@ -151,38 +153,38 @@ function startBulkSimulation(): void {
   console.log("Innos used record: " + simResult.innoUsedRecord);
   console.log("Mesos used record: " + simResult.totalMesosUsedRecord);
 
-  minTracesUsedValue.innerHTML = simResult.minTracesUsed.toString();
-  maxTracesUsedValue.innerHTML = simResult.maxTracesUsed.toString();
-  averageTracesUsedValue.innerHTML = simResult.averageTracesUsed.toString();
-  averageMesosUsedOnTracesValue.innerHTML = simResult.averageMesosUsedOnTraces.toString();
-  medianTracesUsedValue.innerHTML = simResult.medianTracesUsed.toString();
-  medianMesosUsedOnTracesValue.innerHTML = simResult.medianMesosUsedOnTraces.toString();
-  tracesUsedIqrValue.innerHTML = simResult.tracesIqr.toString();
-  mesosUsedOnTracesIqrValue.innerHTML = simResult.mesosUsedOnTracesIqr.toString();
+  minTracesUsedValue.innerHTML = numberConverter.format(simResult.minTracesUsed);
+  maxTracesUsedValue.innerHTML = numberConverter.format(simResult.maxTracesUsed);
+  averageTracesUsedValue.innerHTML = numberConverter.format(simResult.averageTracesUsed);
+  averageMesosUsedOnTracesValue.innerHTML = numberConverter.format(simResult.averageMesosUsedOnTraces);
+  medianTracesUsedValue.innerHTML = numberConverter.format(simResult.medianTracesUsed);
+  medianMesosUsedOnTracesValue.innerHTML = numberConverter.format(simResult.medianMesosUsedOnTraces);
+  tracesUsedIqrValue.innerHTML = numberConverter.format(simResult.tracesIqr);
+  mesosUsedOnTracesIqrValue.innerHTML = numberConverter.format(simResult.mesosUsedOnTracesIqr);
 
-  minCssUsedValue.innerHTML = simResult.minCssUsed.toString();
-  maxCssUsedValue.innerHTML = simResult.maxCssUsed.toString();
-  averageCssUsedValue.innerHTML = simResult.averageCssUsed.toString();
-  averageMesosUsedOnCssValue.innerHTML = simResult.averageMesosUsedOnCss.toString();
-  medianCssUsedValue.innerHTML = simResult.medianCssUsed.toString();
-  medianMesosUsedOnCssValue.innerHTML = simResult.medianMesosUsedOnCss.toString();
-  cssUsedIqrValue.innerHTML = simResult.cssUsedIqr.toString();
-  mesosUsedOnCssIqrValue.innerHTML = simResult.mesosUsedOnCssIqr.toString();
+  minCssUsedValue.innerHTML = numberConverter.format(simResult.minCssUsed);
+  maxCssUsedValue.innerHTML = numberConverter.format(simResult.maxCssUsed);
+  averageCssUsedValue.innerHTML = numberConverter.format(simResult.averageCssUsed);
+  averageMesosUsedOnCssValue.innerHTML = numberConverter.format(simResult.averageMesosUsedOnCss);
+  medianCssUsedValue.innerHTML = numberConverter.format(simResult.medianCssUsed);
+  medianMesosUsedOnCssValue.innerHTML = numberConverter.format(simResult.medianMesosUsedOnCss);
+  cssUsedIqrValue.innerHTML = numberConverter.format(simResult.cssUsedIqr);
+  mesosUsedOnCssIqrValue.innerHTML = numberConverter.format(simResult.mesosUsedOnCssIqr);
 
-  minInnoUsedValue.innerHTML = simResult.minInnoUsed.toString();
-  maxInnoUsedValue.innerHTML = simResult.maxInnoUsed.toString();
-  averageInnoUsedValue.innerHTML = simResult.averageInnoUsed.toString();
-  averageMesosUsedOnInnoValue.innerHTML = simResult.averageMesosUsedOnInno.toString();
-  medianInnoUsedValue.innerHTML = simResult.medianInnoUsed.toString();
-  medianMesosUsedOnInnoValue.innerHTML = simResult.medianMesosUsedOnInno.toString();
-  innoUsedIqrValue.innerHTML = simResult.innoUsedIqr.toString();
-  mesosUsedOnInnoIqrValue.innerHTML = simResult.mesosUsedOnInnoIqr.toString();
+  minInnoUsedValue.innerHTML = numberConverter.format(simResult.minInnoUsed);
+  maxInnoUsedValue.innerHTML = numberConverter.format(simResult.maxInnoUsed);
+  averageInnoUsedValue.innerHTML = numberConverter.format(simResult.averageInnoUsed);
+  averageMesosUsedOnInnoValue.innerHTML = numberConverter.format(simResult.averageMesosUsedOnInno);
+  medianInnoUsedValue.innerHTML = numberConverter.format(simResult.medianInnoUsed);
+  medianMesosUsedOnInnoValue.innerHTML = numberConverter.format(simResult.medianMesosUsedOnInno);
+  innoUsedIqrValue.innerHTML = numberConverter.format(simResult.innoUsedIqr);
+  mesosUsedOnInnoIqrValue.innerHTML = numberConverter.format(simResult.mesosUsedOnInnoIqr);
 
-  minMesosUsedValue.innerHTML = simResult.minMesosUsed.toString();
-  maxMesosUsedValue.innerHTML = simResult.maxMesosUsed.toString();
-  averageTotalMesosUsedValue.innerHTML = simResult.averageTotalMesosUsed.toString();
-  medianTotalMesosUsedValue.innerHTML = simResult.medianTotalMesosUsed.toString();
-  totalMesosUsedIqrValue.innerHTML = simResult.totalMesosUsedIqr.toString();
+  minMesosUsedValue.innerHTML = numberConverter.format(simResult.minMesosUsed);
+  maxMesosUsedValue.innerHTML = numberConverter.format(simResult.maxMesosUsed);
+  averageTotalMesosUsedValue.innerHTML = numberConverter.format(simResult.averageTotalMesosUsed);
+  medianTotalMesosUsedValue.innerHTML = numberConverter.format(simResult.medianTotalMesosUsed);
+  totalMesosUsedIqrValue.innerHTML = numberConverter.format(simResult.totalMesosUsedIqr);
 
   resetCustomPercentileDisplay();
 }
@@ -199,13 +201,13 @@ function displayCustomPercentile(): void {
   customMesosUsedOnInnoPercentile.innerHTML = percentile.toString();
   customTotalMesosUsedPercentile.innerHTML = percentile.toString();
 
-  customTracesUsedPercentileValue.innerHTML = simResult!!.getTracesPercentile(percentile_float).toString();
-  customMesosUsedOnTracesPercentileValue.innerHTML = simResult!!.getMesosUsedOnTracesPercentile(percentile_float).toString();
-  customCssUsedPercentileValue.innerHTML = simResult!!.getCssPercentile(percentile_float).toString();
-  customMesosUsedOnCssPercentileValue.innerHTML = simResult!!.getMesosUsedOnCssPercentile(percentile_float).toString();
-  customInnoUsedPercentileValue.innerHTML = simResult!!.getInnoPercentile(percentile_float).toString();
-  customMesosUsedOnInnoPercentileValue.innerHTML = simResult!!.getMesosUsedOnInnoPercentile(percentile_float).toString();
-  customTotalMesosUsedPercentileValue.innerHTML = simResult!!.getTotalMesosUsedPercentile(percentile_float).toString();
+  customTracesUsedPercentileValue.innerHTML = numberConverter.format(simResult!!.getTracesPercentile(percentile_float));
+  customMesosUsedOnTracesPercentileValue.innerHTML = numberConverter.format(simResult!!.getMesosUsedOnTracesPercentile(percentile_float));
+  customCssUsedPercentileValue.innerHTML = numberConverter.format(simResult!!.getCssPercentile(percentile_float));
+  customMesosUsedOnCssPercentileValue.innerHTML = numberConverter.format(simResult!!.getMesosUsedOnCssPercentile(percentile_float));
+  customInnoUsedPercentileValue.innerHTML = numberConverter.format(simResult!!.getInnoPercentile(percentile_float))
+  customMesosUsedOnInnoPercentileValue.innerHTML = numberConverter.format(simResult!!.getMesosUsedOnInnoPercentile(percentile_float));
+  customTotalMesosUsedPercentileValue.innerHTML = numberConverter.format(simResult!!.getTotalMesosUsedPercentile(percentile_float));
 }
 
 function resetCustomPercentileDisplay(): void {
