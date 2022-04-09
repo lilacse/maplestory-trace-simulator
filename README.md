@@ -1,13 +1,13 @@
-# Maplestory Trace Simulator
+# MapleStory Trace Simulator
 
 Simulates spell trace enhancement used in the game Maplestory. WIP. 
+
+This branch is for a remake on the UI with [Angular](http://angular.io). Old UI stays in `/src_old` until new UI is somewhat usable, and with all the logic migrated out.  
 
 ---
 
 Todo list: 
-- [x] Statistics features for SimulationTaskResult
-- [ ] A static webpage as UI (WIP)
-- [ ] Make the webpage mobile friendly
+- [ ] UI remake with Angular (and make it mobile friendly)
 
 Low priority: 
 - [ ] Lucky day scroll support
@@ -17,14 +17,18 @@ Low priority:
 
 ### Dependencies
 
-- Python 3.x (for starting local server)
+You need to install: 
+
 - Node.js + npm
+
+Other dependencies used by the project which is installed with npm: 
+
+- Angular
 - TypeScript
-- Rollup
 
 ### Usage
 
 1. Clone this repo. 
-2. Run `transpile.bat` to transpile the `.ts` files into `.js` files and bundle them into one file. 
-3. Run `start_local_server.bat` to start the local server (might conflict with other local servers if you already have one, but you might know how to resolve that if you already have another local server :) )
-4. Visit `http://localhost:8000` and navigate to `src/html/tracesim.html` in your browser. 
+2. Run `npm install` to get the deps. 
+3. Run `ng serve` in this repo's root folder.
+4. Visit `http://localhost:4200` in your browser. 
