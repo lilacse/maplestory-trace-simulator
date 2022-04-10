@@ -3,11 +3,13 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { EqiupmentEditorComponent } from './eqiupment-editor/eqiupment-editor.component';
+import { SimulationOptionsComponent } from './simulation-options/simulation-options.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    EqiupmentEditorComponent
+    EqiupmentEditorComponent,
+    SimulationOptionsComponent
   ],
   imports: [
     BrowserModule

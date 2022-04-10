@@ -1,0 +1,131 @@
+<div class="section-box">
+    <div class="section-title">
+        Simulation Options
+    </div>
+    <div class="section-subtitle">
+        Spell Traces
+    </div>
+    <div class="input-row">
+        <label for="traceTypeInput" class="input-label">Spell Trace type:</label>
+        <select id="traceTypeInput" class="input-box">
+            <option value="Trace100p">100% Success Rate Enhancement</option>
+            <option value="Trace70p">70% Success Rate Enhancement</option>
+            <option value="Trace30p">30% Success Rate Enhancement</option>
+            <option value="Trace15p" selected>15% Success Rate Enhancement</option>
+        </select>
+    </div>
+    <div class="spacer"></div>
+    <div class="section-subtitle">
+        Innocence Scrolls
+    </div>
+    <div class="input-row">
+        <label for="failsToInnoInput" class="input-label">Number of failed slots before using Inno Scrolls: </label>
+        <input id="failsToInnoInput" class="input-box" type="number" min="0" />
+    </div>
+    <div class="input-row">
+        <label for="useSpellTraceInnoInput" class="input-label">Use Inno Scrolls from Spell Traces:</label>
+        <input id="useSpellTraceInnoInput" class="input-box" type="checkbox" />
+    </div>
+    <div class="input-row">
+        <label for="innoScrollTypeInput" class="input-label">Inno Scroll type:</label>
+        <select id="innoScrollTypeInput" class="input-box">
+            <option value="Inno20p">Innocence Scroll 20%</option>
+            <option value="Inno40p">Innocence Scroll 40%</option>
+            <option value="Inno50p" selected>Innocence Scroll 50%</option>
+            <option value="Inno60p">Innocence Scroll 60%</option>
+            <option value="Inno70p">Innocence Scroll 70%</option>
+            <option value="Inno30pTrace">Innocence Scroll 30% (Spell Trace)</option>
+            <option value="Inno30pTrace">Ark Innocence Scroll 30% (Spell Trace)</option>
+        </select>
+    </div>
+    <div class="spacer"></div>
+    <div class="section-subtitle">
+        Clean Slate Scrolls
+    </div>
+    <div class="input-row">
+        <label for="useSpellTraceCssInput" class="input-label">Use CSSs from Spell Traces:</label>
+        <input id="useSpellTraceCssInput" class="input-box" type="checkbox" />
+    </div>
+    <div class="input-row">
+        <label for="cssTypeInput" class="input-label">CSS type: </label>
+          <select id="cssTypeInput" class="input-box">
+            <option value="Css1p">Pure Clean Slate Scroll 1%</option>
+            <option value="Css3p">Pure Clean Slate Scroll 3%</option>
+            <option value="Css5p">Pure Clean Slate Scroll 5%</option>
+            <option value="Css10p" selected>Pure Clean Slate Scroll 10%</option>
+            <option value="Css20p">Pure Clean Slate Scroll 20%</option>
+            <option value="Css5pTrace">Pure Clean Slate Scroll 5% (Spell Trace)</option>
+          </select>
+    </div>
+    <div class="spacer"></div>
+    <div class="section-subtitle">
+        Cost
+    </div>
+    <div class="note">
+        Note: You can leave these values as blank if you don't use the scrolls or you don't want Mesos cost estimations. 
+    </div>
+    <div class="spacer"></div>
+    <div class="input-row">
+        <label for="traceCostInput" class="input-label">Cost per Spell Trace in Mesos: </label>
+        <input id="traceCostInput" class="input-box" type="number" min="0" />
+    </div>
+    <div class="input-row">
+        <label for="cssCostInput" class="input-label">Cost per CSS in Mesos: </label>
+        <input id="cssCostInput" class="input-box" type="number" min="0" />
+    </div>
+    <div class="input-row">
+        <label for="innoCostInput" class="input-label">Cost per Inno Scroll in Mesos: </label>
+        <input id="innoCostInput" class="input-box" type="number" min="0" />
+    </div>
+    <div class="spacer"></div>
+    <div class="section-subtitle">
+        Other Bonuses
+    </div>
+    <div class="input-row">
+        <label for="feverInput" class="input-label">Fever Time:</label>
+        <input id="feverInput" class="input-box" type="checkbox" />
+    </div>
+    <div class="input-row">
+        <label for="discountInput" class="input-label">50% Spell Trace cost discount:</label>
+        <input id="discountInput" class="input-box" type="checkbox" />
+    </div>
+    <div class="input-row">
+        <label for="diligenceInput" class="input-label">Diligence bonus: </label>
+          <select id="diligenceInput" class="input-box">
+            <option value="DiligenceLv0">Diligence Lv0 (+0%)</option>
+            <option value="DiligenceLv10">Diligence Lv10 (+1%)</option>
+            <option value="DiligenceLv20">Diligence Lv20 (+2%)</option>
+            <option value="DiligenceLv30">Diligence Lv30 (+3%)</option>
+            <option value="DiligenceLv40">Diligence Lv40 (+4%)</option>
+            <option value="DiligenceLv50">Diligence Lv50 (+5%)</option>
+            <option value="DiligenceLv60">Diligence Lv60 (+6%)</option>
+            <option value="DiligenceLv70">Diligence Lv70 (+7%)</option>
+            <option value="DiligenceLv80">Diligence Lv80 (+8%)</option>
+            <option value="DiligenceLv90">Diligence Lv90 (+9%)</option>
+            <option value="DiligenceLv100">Diligence Lv100 (+10%)</option>
+          </select>
+    </div>
+    <div class="input-row">
+        <label for="guildMasteryInput" class="input-label">Guild Enhancement Mastery bonus: </label>
+          <select id="guildMasteryInput" class="input-box">
+            <option value="EnhanceMasteryLv0">Enhancement Mastery Lv0 (+0%)</option>
+            <option value="EnhanceMasteryLv1">Enhancement Mastery Lv1 (+1%)</option>
+            <option value="EnhanceMasteryLv2">Enhancement Mastery Lv2 (+2%)</option>
+            <option value="EnhanceMasteryLv3">Enhancement Mastery Lv3 (+3%)</option>
+            <option value="EnhanceMasteryLv4">Enhancement Mastery Lv4 (+4%)</option>
+          </select>
+    </div>
+    <div class="input-row">
+        <label for="guildSalvationInput" class="input-label">Guild Upgrade Salvation bonus: </label>
+          <select id="guildSalvationInput" class="input-box">
+            <option value="UpgradeSalvationLv0">Upgrade Salvatiion Lv0 (0%)</option>
+            <option value="UpgradeSalvationLv1">Upgrade Salvatiion Lv1 (1%)</option>
+            <option value="UpgradeSalvationLv2">Upgrade Salvatiion Lv2 (2%)</option>
+            <option value="UpgradeSalvationLv3">Upgrade Salvatiion Lv3 (3%)</option>
+            <option value="UpgradeSalvationLv4">Upgrade Salvatiion Lv4 (4%)</option>
+          </select>
+    </div>
+    <div class="button-wrapper">
+        <div class="button button-danger">Reset simulation options</div>
+    </div>
+</div> 
