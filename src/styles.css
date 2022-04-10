@@ -56,3 +56,32 @@ input:focus {
   grid-column: 4/5;
 }
 
+.button-wrapper {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.button {
+  background-color: #ffffff;
+  border-style: none;
+  margin: 1rem;
+  padding: 1rem;
+  text-align: center;
+  width: 200px;
+  box-shadow: 0px 0px 5px #999999;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.button-danger:hover {
+  box-shadow: 0px 0px 5px #d80000;
+}
+
+.button-normal:hover {
+  box-shadow: 0px 0px 5px #87ceeb;
+}
