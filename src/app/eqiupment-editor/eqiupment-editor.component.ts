@@ -16,8 +16,8 @@ export class EqiupmentEditorComponent implements OnInit {
 
   public equipRef: Equipment;
 
-  constructor(public traceSimulatorService: TraceSimulatorService) {
-    this.equipRef = traceSimulatorService.equipment;
+  constructor(private _traceSimulatorService: TraceSimulatorService) {
+    this.equipRef = _traceSimulatorService.equipment;
 
     this._defaultEquipTotalSlots = this.equipRef.totalSlotCount;
     this._defaultEquipInitialSucceededSlots = this.equipRef.succededSlotCount;
@@ -34,5 +34,4 @@ export class EqiupmentEditorComponent implements OnInit {
     this.equipRef.failedSlotCount = this._defaultEquipInitialFailedSlots;
     this.equipRef.costPerClick = this._defaultEquipCostPerClick;
   }
-
 }
