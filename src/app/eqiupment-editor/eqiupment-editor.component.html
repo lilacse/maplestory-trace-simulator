@@ -4,19 +4,19 @@
     </div>
     <div class="input-row">
         <label for="totalSlotsInput" class="input-label">Total number of slots:</label>
-        <input id="totalSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="traceSimulatorService.equipment.totalSlotCount" />
+        <input id="totalSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="equipRef.totalSlotCount" />
     </div>
     <div class="input-row">
         <label for="succeededSlotsInput" class="input-label">Number of succeeded slots:</label>
-        <input id="succeededSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="traceSimulatorService.equipment.succededSlotCount" />
+        <input id="succeededSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="equipRef.succededSlotCount" />
     </div>
     <div class="input-row">
         <label for="failedSlotsInput" class="input-label">Number of failed slots:</label>
-        <input id="failedSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="traceSimulatorService.equipment.failedSlotCount" />
+        <input id="failedSlotsInput" class="input-box" type="number" min="0" [(ngModel)]="equipRef.failedSlotCount" />
     </div>
     <div class="input-row">
         <label for="costPerClickInput" class="input-label">Spell Trace cost per click:</label>
-        <input id="costPerClickInput" class="input-box" type="number" min="0" [(ngModel)]="traceSimulatorService.equipment.costPerClick" />
+        <input id="costPerClickInput" class="input-box" type="number" min="0" [(ngModel)]="equipRef.costPerClick" />
     </div>
     <div class="button-wrapper">
         <div class="button button-danger" (click)="resetEquipOptions()">Reset equipment options</div>
