@@ -5,23 +5,23 @@ export default class Equipment {
   private _currentFailedSlots: number = 0;
   private _currentRemainingSlots: number = 0;
 
-  private readonly _totalSlotCount: number;
-  private readonly _succededSlotCount: number;
-  private readonly _failedSlotCount: number;
-  private readonly _costPerClick: number;
+  public totalSlotCount: number;
+  public succededSlotCount: number;
+  public failedSlotCount: number;
+  public costPerClick: number;
 
   constructor(totalSlots: number, succeeded: number, failed: number, costPerClick: number) {
     if (failed + succeeded > totalSlots) {
       throw "Number of succeeded and failed slots more than the total number of slots!"
     }
       
-    this._totalSlotCount = totalSlots;
-    this._succededSlotCount = succeeded;
-    this._failedSlotCount = failed;
+    this.totalSlotCount = totalSlots;
+    this.succededSlotCount = succeeded;
+    this.failedSlotCount = failed;
 
     this._currentRemainingSlots = totalSlots - succeeded - failed;
     this._currentFailedSlots = failed;
-    this._costPerClick = costPerClick;
+    this.costPerClick = costPerClick;
   }
 
   get currentFailedSlots(): number {
@@ -33,13 +33,13 @@ export default class Equipment {
   }
 
   resetEquip(): void {
-    this._currentRemainingSlots = this._totalSlotCount - this._succededSlotCount - this._failedSlotCount;
-    this._currentFailedSlots = this._failedSlotCount;
+    this._currentRemainingSlots = this.totalSlotCount - this.succededSlotCount - this.failedSlotCount;
+    this._currentFailedSlots = this.failedSlotCount;
   }
 
   getCostPerClick(hasDiscount: boolean = false): number {
-    if (hasDiscount) return Math.ceil(this._costPerClick) / 2;
-    else return this._costPerClick;
+    if (hasDiscount) return Math.ceil(this.costPerClick) / 2;
+    else return this.costPerClick;
   }
 
   traceSuccess(): void {
@@ -64,6 +64,6 @@ export default class Equipment {
 
   innoSuccess(): void {
     this._currentFailedSlots = 0;
-    this._currentRemainingSlots = this._totalSlotCount;
+    this._currentRemainingSlots = this.totalSlotCount;
   }
 }

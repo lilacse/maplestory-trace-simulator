@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { EqiupmentEditorComponent } from './eqiupment-editor/eqiupment-editor.component';
@@ -12,7 +13,8 @@ import { SimulationOptionsComponent } from './simulation-options/simulation-opti
     SimulationOptionsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule, 
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
