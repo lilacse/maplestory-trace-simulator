@@ -7,21 +7,21 @@ import DiligenceBonus from "../../enums/trace-bonuses/DiligenceBonus";
 
 
 export default class SimulationOptions {
-  public failsToInno: number = 0;
+  public failsToInno: number = 4;
   public useArkInno: boolean = false;
   public useSpellTraceInno: boolean = false;
   public useSpellTraceCss: boolean = false;
-  public cssCost: number = 0;
-  public innoCost: number = 0;
-  public traceCost: number = 0;
+  public cssCost: number = 10000000;
+  public innoCost: number = 20000000;
+  public traceCost: number = 4150;
   public useCssType: CssType = CssType.Css10p;
   public useInnoType: InnoType = InnoType.Inno50p;
-  public traceType: TraceType = TraceType.Trace100p;
+  public traceType: TraceType = TraceType.Trace15p;
   public hasFever: boolean = false;
   public hasDiscount: boolean = false;
-  public diligenceLevel: DiligenceBonus = DiligenceBonus.DiligenceLv0;
-  public guildEnhancementMasteryBonus: GuildEnhancementMasteryBonus = GuildEnhancementMasteryBonus.EnhanceMasteryLv0;
-  public guildUpgradeSalvationLevel: GuildUpgradeSalvationBonus = GuildUpgradeSalvationBonus.UpgradeSalvationLv0;
+  public diligenceLevel: DiligenceBonus = DiligenceBonus.DiligenceLv100;
+  public guildEnhancementMasteryBonus: GuildEnhancementMasteryBonus = GuildEnhancementMasteryBonus.EnhanceMasteryLv4;
+  public guildUpgradeSalvationLevel: GuildUpgradeSalvationBonus = GuildUpgradeSalvationBonus.UpgradeSalvationLv4;
 
   get traceSuccessRate(): number {
     let successRate: number;
