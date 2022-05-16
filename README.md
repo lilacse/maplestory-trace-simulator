@@ -7,7 +7,9 @@ This branch is for a remake on the UI with [Angular](http://angular.io). Old UI 
 ---
 
 Todo list: 
-- [ ] UI remake with Angular (and make it mobile friendly)
+- [ ] Adapt the simulator logic to make use of the updated data types. 
+- [ ] Bind simulator options frontend to the controller. 
+- [ ] Add functionality to start simulation and display results. 
 
 Low priority: 
 - [ ] Lucky day scroll support
