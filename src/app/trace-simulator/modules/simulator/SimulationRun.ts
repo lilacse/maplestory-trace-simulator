@@ -29,7 +29,7 @@ export default class SimulationRun {
     console.log("==================");
     console.log(`Base success rate of trace: ${this._options.traceType * 100}%`);
     console.log(`Trace's cost in mesos: ${this._options.traceCost}`);
-    console.log(`Number of fails before using Innocence Scroll: ${this._options.failsToInno}`);
+    console.log(`Number of fails before using Innocence Scroll: ${this._options.failsBeforeInno}`);
     if (this._options.useArkInno) {
       console.log(`Use Ark Innocence Scroll: ${this._options.useArkInno}`);
     }
@@ -37,14 +37,14 @@ export default class SimulationRun {
       console.log(`Use spell traces for Innocence Scrolls: ${this._options.useSpellTraceInno}`);
     }
     else {
-      console.log(`Success rate of Innocence Scrolls used: ${this._options.useInnoType * 100}%`);
+      console.log(`Success rate of Innocence Scrolls used: ${this._options.innoType * 100}%`);
       console.log(`Innocence Scrolls' cost in mesos: ${this._options.innoCost}`);
     }
     if (this._options.useSpellTraceCss) {
       console.log(`Use spell traces for Clean Slate Scrolls: ${this._options.useSpellTraceCss}`);
     }
     else {
-      console.log(`Success rate of Clean Slate Scrolls used: ${this._options.useCssType * 100}%`);
+      console.log(`Success rate of Clean Slate Scrolls used: ${this._options.cssType * 100}%`);
       console.log(`Clean Slate Scrolls' cost in mesos: ${this._options.cssCost}`);
     }
     console.log(`Has Discount: ${this._options.hasDiscount}`);
@@ -105,10 +105,10 @@ export default class SimulationRun {
   public nextStep(): SimulationStep {
     let rng = Math.random();
 
-    if (this._equip.currentFailedSlots < this._options.failsToInno && this._equip.currentRemainingSlots > 0) {
+    if (this._equip.currentFailedSlots < this._options.failsBeforeInno && this._equip.currentRemainingSlots > 0) {
       return this.doTrace(rng);
     }
-    else if (this._equip.currentFailedSlots >= this._options.failsToInno) {
+    else if (this._equip.currentFailedSlots >= this._options.failsBeforeInno) {
       return this.doInno(rng);
     }
     else if (this._equip.currentRemainingSlots == 0 && this._equip.currentFailedSlots > 0) {

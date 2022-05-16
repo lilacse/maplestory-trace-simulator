@@ -15,15 +15,15 @@ import { TraceSimulatorService } from '../trace-simulator/trace-simulator.servic
 })
 export class SimulationOptionsComponent implements OnInit {
 
-  private readonly _defaultFailsToInno: number;
+  private readonly _defaultFailsBeforeInno: number;
   private readonly _defaultUseArkInno: boolean;
   private readonly _defaultUseSpellTraceInno: boolean;
   private readonly _defaultUseSpellTraceCss: boolean;
   private readonly _defaultCssCost: number;
   private readonly _defaultInnoCost: number;
   private readonly _defaultTraceCost: number;
-  private readonly _defaultUseCssType: CssType;
-  private readonly _defaultUseInnoType: InnoType;
+  private readonly _defaultCssType: CssType;
+  private readonly _defaultInnoType: InnoType;
   private readonly _defaultTraceType: TraceType;
   private readonly _defaultHasFever: boolean;
   private readonly _defaultHasDiscount: boolean;
@@ -36,15 +36,15 @@ export class SimulationOptionsComponent implements OnInit {
   constructor(private _traceSimulatorService: TraceSimulatorService) { 
     this.simOptions = _traceSimulatorService.simulationOptions;
 
-    this._defaultFailsToInno = this.simOptions.failsToInno;
+    this._defaultFailsBeforeInno = this.simOptions.failsBeforeInno;
     this._defaultUseArkInno = this.simOptions.useArkInno;
     this._defaultUseSpellTraceInno = this.simOptions.useSpellTraceInno;
     this._defaultUseSpellTraceCss = this.simOptions.useSpellTraceCss;
     this._defaultCssCost = this.simOptions.cssCost;
     this._defaultInnoCost = this.simOptions.innoCost;
     this._defaultTraceCost = this.simOptions.traceCost;
-    this._defaultUseCssType = this.simOptions.useCssType;
-    this._defaultUseInnoType = this.simOptions.useInnoType;
+    this._defaultCssType = this.simOptions.cssType;
+    this._defaultInnoType = this.simOptions.innoType;
     this._defaultTraceType = this.simOptions.traceType;
     this._defaultHasFever = this.simOptions.hasFever;
     this._defaultHasDiscount = this.simOptions.hasDiscount;

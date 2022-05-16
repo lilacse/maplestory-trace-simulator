@@ -7,15 +7,15 @@ import DiligenceBonus from "../../enums/trace-bonuses/DiligenceBonus";
 
 
 export default class SimulationOptions {
-  public failsToInno: number = 4;
+  public failsBeforeInno: number = 4;
   public useArkInno: boolean = false;
   public useSpellTraceInno: boolean = false;
   public useSpellTraceCss: boolean = false;
   public cssCost: number = 10000000;
   public innoCost: number = 20000000;
   public traceCost: number = 4150;
-  public useCssType: CssType = CssType.Css10p;
-  public useInnoType: InnoType = InnoType.Inno50p;
+  public cssType: CssType = CssType.Css10p;
+  public innoType: InnoType = InnoType.Inno50p;
   public traceType: TraceType = TraceType.Trace15p;
   public hasFever: boolean = false;
   public hasDiscount: boolean = false;
@@ -67,7 +67,7 @@ export default class SimulationOptions {
         return 0.3;
     }
     else {
-      return this.useInnoType;
+      return this.innoType;
     }
   }
 
@@ -79,7 +79,7 @@ export default class SimulationOptions {
         return 0.05;
     }
     else {
-      return this.useCssType;
+      return this.cssType;
     }
   }
 }
