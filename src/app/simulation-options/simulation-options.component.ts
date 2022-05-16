@@ -4,7 +4,7 @@ import InnoType from '../trace-simulator/enums/probabilities/InnoType';
 import TraceType from '../trace-simulator/enums/probabilities/TraceType';
 import DiligenceBonus from '../trace-simulator/enums/trace-bonuses/DiligenceBonus';
 import GuildEnhancementMasteryBonus from '../trace-simulator/enums/trace-bonuses/GuildEnhancementMasteryBonus';
-import GuildUpgradeSalvationBonus from '../trace-simulator/enums/trace-bonuses/GuildUpgradeSalvationBonus';
+import GuildUpgradeSalvationLevel from '../trace-simulator/enums/trace-bonuses/GuildUpgradeSalvationLevel';
 import SimulationOptions from '../trace-simulator/modules/simulator/SimulationOptions';
 import { TraceSimulatorService } from '../trace-simulator/trace-simulator.service';
 
@@ -29,7 +29,7 @@ export class SimulationOptionsComponent implements OnInit {
   private readonly _defaultHasDiscount: boolean;
   private readonly _defaultDiligenceLevel: DiligenceBonus;
   private readonly _defaultGuildEnhancementMasteryBonus: GuildEnhancementMasteryBonus;
-  private readonly _defaultGuildUpgradeSalvationLevel: GuildUpgradeSalvationBonus;
+  private readonly _defaultGuildUpgradeSalvationLevel: GuildUpgradeSalvationLevel;
 
   public simOptions: SimulationOptions;
 

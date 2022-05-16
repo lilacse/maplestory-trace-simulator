@@ -1,4 +1,4 @@
-import GuildUpgradeSalvationBonus from "../../enums/trace-bonuses/GuildUpgradeSalvationBonus";
+import GuildUpgradeSalvationLevel from "../../enums/trace-bonuses/GuildUpgradeSalvationLevel";
 
 
 export default class Equipment {
@@ -46,7 +46,7 @@ export default class Equipment {
     this._currentRemainingSlots--;
   }
 
-  traceFail(salvationLevel: GuildUpgradeSalvationBonus = GuildUpgradeSalvationBonus.UpgradeSalvationLv0): boolean {
+  traceFail(salvationLevel: GuildUpgradeSalvationLevel = GuildUpgradeSalvationLevel.UpgradeSalvationLv0): boolean {
     let rng = Math.random();
 
     if (rng >= salvationLevel) {

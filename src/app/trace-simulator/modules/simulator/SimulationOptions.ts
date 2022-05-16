@@ -1,7 +1,7 @@
 import InnoType from "../../enums/probabilities/InnoType";
 import CssType from "../../enums/probabilities/CssType";
 import TraceType from "../../enums/probabilities/TraceType";
-import GuildUpgradeSalvationBonus from "../../enums/trace-bonuses/GuildUpgradeSalvationBonus";
+import GuildUpgradeSalvationLevel from "../../enums/trace-bonuses/GuildUpgradeSalvationLevel";
 import GuildEnhancementMasteryBonus from "../../enums/trace-bonuses/GuildEnhancementMasteryBonus";
 import DiligenceBonus from "../../enums/trace-bonuses/DiligenceBonus";
 
@@ -21,7 +21,7 @@ export default class SimulationOptions {
   public hasDiscount: boolean = false;
   public diligenceLevel: DiligenceBonus = DiligenceBonus.DiligenceLv100;
   public guildEnhancementMasteryBonus: GuildEnhancementMasteryBonus = GuildEnhancementMasteryBonus.EnhanceMasteryLv4;
-  public guildUpgradeSalvationLevel: GuildUpgradeSalvationBonus = GuildUpgradeSalvationBonus.UpgradeSalvationLv4;
+  public guildUpgradeSalvationLevel: GuildUpgradeSalvationLevel = GuildUpgradeSalvationLevel.UpgradeSalvationLv4;
 
   get traceSuccessRate(): number {
     let successRate: number;

@@ -1,4 +1,4 @@
-enum GuildUpgradeSalvationBonus {
+enum GuildUpgradeSalvationLevel {
   UpgradeSalvationLv0 = 0,
   UpgradeSalvationLv1 = 0.01,
   UpgradeSalvationLv2 = 0.02,
@@ -6,5 +6,5 @@ enum GuildUpgradeSalvationBonus {
   UpgradeSalvationLv4 = 0.04
 }
 
-export default GuildUpgradeSalvationBonus;
+export default GuildUpgradeSalvationLevel;
 
