@@ -7,6 +7,8 @@ import GuildEnhancementMasteryBonus from '../trace-simulator/enums/trace-bonuses
 import GuildUpgradeSalvationLevel from '../trace-simulator/enums/trace-bonuses/GuildUpgradeSalvationLevel';
 import SimulationOptions from '../trace-simulator/modules/simulator/SimulationOptions';
 import { TraceSimulatorService } from '../trace-simulator/trace-simulator.service';
+import { SelectInputDataProviderService } from './select-input-data-provider/select-input-data-provider.service';
+import SelectInputDataInterface from './select-input-data-provider/SelectInputDataInterface';
 
 @Component({
   selector: 'app-simulation-options',
@@ -33,7 +35,21 @@ export class SimulationOptionsComponent implements OnInit {
 
   public simOptions: SimulationOptions;
 
-  constructor(private _traceSimulatorService: TraceSimulatorService) { 
+  public cssTypeSelectInputData: SelectInputDataInterface[];
+  public innoTypeSelectInputData: SelectInputDataInterface[];
+  public traceTypeSelectInputData: SelectInputDataInterface[];
+  public diligenceLevelSelectInputData: SelectInputDataInterface[];
+  public guildEnhancementMasteryBonusSelectInputData: SelectInputDataInterface[];
+  public guildUpgradeSalvationBonusSelectInputData: SelectInputDataInterface[];
+
+  public selectedCssType: string;
+  public selectedInnoType: string;
+  public selectedTraceType: string;
+  public selectedDiligenceLevel: string;
+  public selectedGuildEnhancementMasteryBonus: string;
+  public selectedGuildUpgradeSalvationBonus: string;
+
+  constructor(private _traceSimulatorService: TraceSimulatorService, private _selectInputDataProviderService: SelectInputDataProviderService) { 
     this.simOptions = _traceSimulatorService.simulationOptions;
 
     this._defaultFailsBeforeInno = this.simOptions.failsBeforeInno;
@@ -51,6 +67,20 @@ export class SimulationOptionsComponent implements OnInit {
     this._defaultDiligenceLevel = this.simOptions.diligenceLevel;
     this._defaultGuildEnhancementMasteryBonus = this.simOptions.guildEnhancementMasteryBonus;
     this._defaultGuildUpgradeSalvationLevel = this.simOptions.guildUpgradeSalvationLevel;
+
+    this.cssTypeSelectInputData = _selectInputDataProviderService.getSelectInputData('CssType');
+    this.innoTypeSelectInputData = _selectInputDataProviderService.getSelectInputData('InnoType');
+    this.traceTypeSelectInputData = _selectInputDataProviderService.getSelectInputData('TraceType');
+    this.diligenceLevelSelectInputData = _selectInputDataProviderService.getSelectInputData('DiligenceBonus');
+    this.guildEnhancementMasteryBonusSelectInputData = _selectInputDataProviderService.getSelectInputData('GuildEnhancementMasteryBonus');
+    this.guildUpgradeSalvationBonusSelectInputData = _selectInputDataProviderService.getSelectInputData('GuildUpgradeSalvationLevel');
+
+    this.selectedCssType = this.cssTypeSelectInputData.find(css => css.value === this._defaultCssType)?.selectValue || "";
+    this.selectedInnoType = this.innoTypeSelectInputData.find(inno => inno.value === this._defaultInnoType)?.selectValue || "";
+    this.selectedTraceType = this.traceTypeSelectInputData.find(trace => trace.value === this._defaultTraceType)?.selectValue || "";
+    this.selectedDiligenceLevel = this.diligenceLevelSelectInputData.find(bonus => bonus.value === this._defaultDiligenceLevel)?.selectValue || "";
+    this.selectedGuildEnhancementMasteryBonus = this.guildEnhancementMasteryBonusSelectInputData.find(bonus => bonus.value === this._defaultGuildEnhancementMasteryBonus)?.selectValue || "";
+    this.selectedGuildUpgradeSalvationBonus = this.guildUpgradeSalvationBonusSelectInputData.find(bonus => bonus.value === this._defaultGuildUpgradeSalvationLevel)?.selectValue || "";
   }
 
   ngOnInit(): void {
